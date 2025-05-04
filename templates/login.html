@@ -1,0 +1,77 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Persona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/736x/91/ed/87/91ed87106d401f7210ab74780d85fc1b.jpg');
+            backdrop-filter: blur(5px);
+            /* Apply blur */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        h2 {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        input,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        input {
+            background: white;
+            color: black;
+        }
+
+        button {
+            background: #ff5722;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2><em>Login</em></h2>
+        <form action="{{ url_for('login') }}" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" name="email" required><br><br>
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" required><br><br>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <form action="{{ url_for('register') }}" method="GET">
+            <button type="submit">Create A New Account</button>
+        </form>
+    </div>
+</body>
+</html>

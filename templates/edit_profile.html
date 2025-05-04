@@ -1,0 +1,59 @@
+<!-- edit_profile.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/736x/91/ed/87/91ed87106d401f7210ab74780d85fc1b.jpg');
+            backdrop-filter: blur(5px);
+            /* Apply blur */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="bg-white p-6 rounded-2xl shadow-lg w-96">
+        <button class="text-black mb-4">
+            <a href="{{ url_for('home') }}">&#8592;</a> <!-- Left arrow -->
+        </button>
+        <h2 class="text-center text-xl font-semibold mt-3">Edit Profile</h2>
+        <form action="{{ url_for('edit_profile') }}" method="POST" class="mt-4 space-y-4">
+            <div>
+                <label class="block text-gray-600 text-sm">Name</label>
+                <input type="text" name="Full_name" value="{{ user_data[1] }}" class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
+            <div>
+                <label class="block text-gray-600 text-sm">Email</label>
+                <input type="email" name="email" value="{{ user_data[2] }}" class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
+            <div>
+                <label class="block text-gray-600 text-sm">Date of Birth</label>
+                <input type="date" name="DoB" value="{{ user_data[3] }}" class="w-full p-2 border rounded-md bg-gray-100">
+            </div>
+            <div>
+                <label class="block text-gray-600 text-sm">Travel Persona</label>
+                <input type="text" name="city" value="{{ user_data[4] }}" class="w-full p-2 border rounded-md bg-gray-100" readonly>
+            </div>
+
+            <button type="submit" class="w-full bg-orange-500 text-white p-2 rounded-md">
+                Save Changes
+            </button>
+        </form>
+    </div>
+</body>
+
+</html>

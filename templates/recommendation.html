@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Display Destinations</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cards2.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='cards.css') }}">
+
+    <style>
+        body {
+            background-image: url('https://github.com/DeemaEssam/Final_Project/blob/main/img/bg2.jpg?raw=true');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* Fix the blur effect so it stays in place */
+        body::before {
+            content: "";
+            position: fixed;
+            /* Keeps it fixed while scrolling */
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.1);
+            /* Semi-transparent overlay */
+            backdrop-filter: blur(10px);
+            /* Apply blur */
+            -webkit-backdrop-filter: blur(10px);
+            /* Safari support */
+            z-index: -1;
+        }
+
+        h1 {
+            color: #fff;
+        }
+
+        /*.lead{
+                color:#aaa;
+            }
+
+            .wrapper{
+                margin:10vh
+            }*/
+
+        :root {
+            --orange: #fd9940;
+            --darkorange: #dd7d25;
+            --platinum: #e5e5e5;
+            --black: #2b2d42;
+            --white: #fff;
+            --thumb: #edf2f4;
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            padding: 0 15px;
+            margin: 0 auto;
+            color: var(--white);
+        }
+
+        h2,
+        h4 {
+            font-size: 32px;
+            margin-bottom: 1em;
+            color: #fff;
+        }
+
+        .tag {
+            background-color: #FF5722;
+            /* Vibrant orange */
+            color: white;
+            font-weight: bold;
+            padding: 8px 20px;
+            border-radius: 20px;
+            display: inline-block;
+            font-family: Arial, sans-serif;
+            text-transform: uppercase;
+            font-size: 14px;
+
+        }
+
+        .tag:hover {
+            background-color: #ff562298;
+            /* Vibrant orange */
+        }
+
+        /* Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            /* Position it from the left side to the middle */
+            transform: translateX(-50%);
+            /* Offset it by 50% of its width to truly center it */
+            width: 100%;
+            background-color: #b7a8a3bf;
+            /* Vibrant color */
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+
+        /* Navbar buttons */
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 15px;
+            transition: background 0.3s ease;
+        }
+
+        /* Hover effect */
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+    <section>
+        <center>
+            
+            <!-- <img src="https://github.com/DeemaEssam/Final_Project/blob/main/img/icon.png?raw=true" width="80px"> -->
+            <br>
+
+            <center>
+                <img src="https://github.com/DeemaEssam/Final_Project/blob/main/img/icon.png?raw=true" width="80px">
+                <br>
+                <select id="city-select" class="tag">
+                    <option value="">All Cities</option>
+                    <option class="filter-city" data-city="Abha">Abha</option>
+                    <option class="filter-city" data-city="Al Ahsa">Al Ahsa</option>
+                    <option class="filter-city" data-city="Al Badayea">Al Badayea</option>
+                    <option class="filter-city" data-city="Al Bahah">Al Bahah</option>
+                    <option class="filter-city" data-city="Al Bukayriyah">Al Bukayriyah</option>
+                    <option class="filter-city" data-city="Al Hofuf">Al Hofuf</option>
+                    <option class="filter-city" data-city="Al Jubail">Al Jubail</option>
+                    <option class="filter-city" data-city="Al Jumum">Al Jumum</option>
+                    <option class="filter-city" data-city="Al Kharj">Al Kharj</option>
+                    <option class="filter-city" data-city="Al Khobar">Al Khobar</option>
+                    <option class="filter-city" data-city="Al Mithnab">Al Mithnab</option>
+                    <option class="filter-city" data-city="Al Muwayh Al Gadeem">Al Muwayh Al Gadeem</option>
+                    <option class="filter-city" data-city="Al Muzahimiyah">Al Muzahimiyah</option>
+                    <option class="filter-city" data-city="Al Qatif">Al Qatif</option>
+                    <option class="filter-city" data-city="Al Qurayyat">Al Qurayyat</option>
+                    <option class="filter-city" data-city="Al-Namas">Al-Namas</option>
+                    <option class="filter-city" data-city="Al-Nasfah">Al-Nasfah</option>
+                    <option class="filter-city" data-city="AlUla">AlUla</option>
+                    <option class="filter-city" data-city="Ar Rass">Ar Rass</option>
+                    <option class="filter-city" data-city="Ash Shafa">Ash Shafa</option>
+                    <option class="filter-city" data-city="Az Zulfi">Az Zulfi</option>
+                    <option class="filter-city" data-city="Baljurshi">Baljurshi</option>
+                    <option class="filter-city" data-city="Buraydah">Buraydah</option>
+                    <option class="filter-city" data-city="Dammam">Dammam</option>
+                    <option class="filter-city" data-city="Dawmat Al Jandal">Dawmat Al Jandal</option>
+                    <option class="filter-city" data-city="Dhahran">Dhahran</option>
+                    <option class="filter-city" data-city="Diriyah">Diriyah</option>
+                    <option class="filter-city" data-city="Duhknah">Duhknah</option>
+                    <option class="filter-city" data-city="Hail">Hail</option>
+                    <option class="filter-city" data-city="Jazan">Jazan</option>
+                    <option class="filter-city" data-city="Jeddah">Jeddah</option>
+                    <option class="filter-city" data-city="Jubbah">Jubbah</option>
+                    <option class="filter-city" data-city="King Abdullah Economic City">King Abdullah Economic City</option>
+                    <option class="filter-city" data-city="Madinah">Madinah</option>
+                    <option class="filter-city" data-city="Makkah">Makkah</option>
+                    <option class="filter-city" data-city="Maqnah">Maqnah</option>
+                    <option class="filter-city" data-city="Najran">Najran</option>
+                    <option class="filter-city" data-city="Riyadh">Riyadh</option>
+                    <option class="filter-city" data-city="Sakaka">Sakaka</option>
+                    <option class="filter-city" data-city="Shaqra">Shaqra</option>
+                    <option class="filter-city" data-city="Sharorah">Sharorah</option>
+                    <option class="filter-city" data-city="Tabuk">Tabuk</option>
+                    <option class="filter-city" data-city="Taif">Taif</option>
+                    <option class="filter-city" data-city="Tanomah">Tanomah</option>
+                    <option class="filter-city" data-city="Tayma">Tayma</option>
+                    <option class="filter-city" data-city="Tubarjal">Tubarjal</option>
+                    <option class="filter-city" data-city="Turaif">Turaif</option>
+                    <option class="filter-city" data-city="Umluj">Umluj</option>
+                    <option class="filter-city" data-city="Unaizah">Unaizah</option>
+                    <option class="filter-city" data-city="Ushaiqer">Ushaiqer</option>
+                    <option class="filter-city" data-city="Yanbu">Yanbu</option>
+                </select>
+
+                <!-- َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ -->
+                <button class="tag btn-filter" onclick="filterDestinations()">Go</button>
+                <!-- َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ َ -->
+            </center>
+
+            <!-- <div class="container">
+                <h1 class="display-4 font-weight-bolder">Most Popular</h1>
+                <div>
+                    <ul class="cards" id="card-popular">
+
+                    </ul>
+                </div>
+            </div> -->
+
+            <br>
+
+            <center>
+                <h4 class="display-4 font-weight-bolder">Recommended For You</h4>
+                <div class="row" id="recommendedDestinations"><!-- <div class="row"> -->
+                    {% for destination in recommendations %}
+                    <div class="col-sm-12 col-md-6 col-lg-4 mb-4" data-city="{{ destination.city }}">
+                        <a href="info2.html?id={{ destination.id }}">
+                        <div class="card text-light card-has-bg click-col"
+                            style="background-image:url('{{ destination.imageUrl_x }}'); min-height: 200px; min-width: 300px; background-size: cover; background-position: center;">
+                            <img class="card-img d-none" src="{{ destination.imageUrl_x }}">
+                            <div style="text-align: left;" class="card-img-overlay d-flex flex-column">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <small><i class="far fa-clock"></i> 📍 {{ destination.city }}</small>
+                                        <small><i class="far fa-clock"></i> ⭐ {{ destination.placeRating }}</small>
+                                    </div>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="media">
+                                        <div class="media-body">
+                                            <h4 class="my-0 text-light d-block">{{ destination.name }}</h4>
+                                            <small>⭕ {{ destination.subtype }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </a>
+                    </div>
+                    {% endfor %}<!-- </div> -->
+                </div>
+            </center>
+
+            <br><br><br>
+
+            <!-- <center> -->
+                <!-- <img src="https://github.com/DeemaEssam/Final_Project/blob/main/img/icon.png?raw=true" width="80px"> -->
+                <div class="container">
+                    <!-- <p class="display-4 font-weight-bolder">See More Popular Destinations..</p> -->
+                    <div>
+                        <h4>See More Popular Destinations..</h4>
+                        <ul class="cards" id="card-popular">
+            
+                        </ul>
+                    </div>
+                </div>
+            <!-- <center/> -->
+
+            <br><br><br><br>
+
+            <!-- Navbar at Bottom -->
+            <div class="bottom-nav">
+                <a href="{{ url_for('home') }}" class="nav-item">🏠 Home</a>
+                <a href="{{ url_for('persona') }}" class="nav-item">🧐 New Persona</a>
+                <a href="{{ url_for('destinations') }}" class="nav-item">📍 All Destinations</a>
+                <a href="{{ url_for('profile') }}" class="nav-item">👤 Profile</a>
+                <a href="{{ url_for('logout') }}" class="nav-item">↩️ Logout</a>
+            </div>
+        </center>
+    </section>
+
+    <script>
+        // URL to the raw JSON file on GitHub
+        const datasetUrl =  'static/popular.json';
+        // Fetch the dataset from GitHub
+        fetch(datasetUrl)
+            .then(response => response.json())
+            .then(data => {
+                // Populate the second container (card-popular)
+                const containerPopular = document.getElementById('card-popular');
+                data.forEach(destination => {
+                    const cardHtmlPopular = `
+                                <li class="card" style="min-height: 180px; min-width: 50px; text-align: left; background-image: url('${destination.imageUrl_x}');">
+                                    <div class="card-img-overlay d-flex flex-column">
+                                        <div>
+                                            <h3 class="card-title">${destination.name}</h3>
+                                        </div>
+                                        <div class="card-link-wrapper">
+                                            <p>⭕ ${destination.theme}</p>
+                                            <p>📍${destination.city}</p>
+                                            <p>⭐ ${destination.placeRating}</p>
+                                        </div>
+                                    </div>
+                                </li>
+                        `;
+                    const link = document.createElement('a');
+                    link.href = `info2.html?id=${destination.id}`;  // The destination ID or unique identifier
+                    link.innerHTML = cardHtmlPopular;
+                    containerPopular.appendChild(link);
+                });
+            })
+            .catch(error => console.error('Error fetching the dataset:', error));
+            
+            function filterDestinations() {
+                const selectedCity = document.getElementById('city-select').value.toLowerCase();
+                const destinationCards = document.querySelectorAll('#recommendedDestinations > div');
+
+                destinationCards.forEach(card => {
+                    const cityText = card.getAttribute('data-city')?.toLowerCase() || '';
+                    if (!selectedCity || cityText.includes(selectedCity)) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            }
+            
+    </script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script> <!-- For the clock icon -->
+</body>
+
+</html>

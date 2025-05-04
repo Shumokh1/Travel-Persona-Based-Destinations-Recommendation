@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination Information</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: #f4f4f4;
+        }
+
+        .container {
+            max-width: 660px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            position: relative;
+            text-align: center;
+        }
+
+        .header img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .rating {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #f39c12;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .distance {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        .header h1 {
+            margin: 10px 0 0;
+            color: #333;
+
+        }
+
+        .content {
+            padding: 15px;
+        }
+
+        .location,
+        .contact,
+        .working-hours {
+            margin: 10px 0;
+        }
+
+        .description {
+            margin: 15px 0;
+            color: #555;
+        }
+
+        .button {
+            display: block;
+            width: calc(100% - 30px);
+            margin: 20px auto;
+            padding: 10px;
+            text-align: center;
+            background: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background: #0056b3;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 24px;
+            }
+        }
+
+
+        /* Bottom Navigation Bar */
+        .bottom-nav {
+            position: fixed;
+            bottom: 15px;
+            left: 50%;
+            /* Position it from the left side to the middle */
+            transform: translateX(-50%);
+            /* Offset it by 50% of its width to truly center it */
+            width: 70%;
+            background-color: #b7a8a3bf;
+            /* Vibrant color */
+            display: flex;
+            justify-content: space-around;
+            padding: 12px 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+        }
+
+
+        /* Navbar buttons */
+        .nav-item {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            padding: 10px;
+            border-radius: 15px;
+            transition: background 0.3s ease;
+        }
+
+        /* Hover effect */
+        .nav-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container" id="destination-container">
+        <!-- Destination info will be inserted here dynamically -->
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const datasetUrl = '/static/df_noDuplicates.json';
+
+            // Get the destination ID from the URL query parameters
+            const urlParams = new URLSearchParams(window.location.search);
+            const destinationId = urlParams.get('id');  // Retrieve the ID from the query string
+
+            console.log('Destination ID:', destinationId);  // Debugging output
+
+            // Fetch the dataset and find the matching destination
+            fetch(datasetUrl)
+                .then(response => response.json())
+                .then(data => {
+                    // Find the destination that matches the ID
+                    const destination = data.find(item => item.id == destinationId);
+
+                    if (destination) {
+                        console.log('Found destination:', destination);
+                        // Dynamically populate the destination information
+                        const container = document.getElementById('destination-container');
+                        container.innerHTML = `
+                        <div class="header">
+                            <img src="${destination.imageUrl_x}" width="800px">
+                            <div class="rating">⭐ ${destination.placeRating}</div>
+                            <div class="distance">${destination.city}</div>
+                            <h1>${destination.name}</h1>
+                        </div>
+                        <div class="content">
+                            <div class="location"><strong>Location:</strong> ${destination.address}</div>
+                            <div class="theme"><strong>Theme:</strong> ${destination.theme}</div>
+
+                            
+
+
+                            <div class="description">
+                                <strong>Description:</strong>
+                                <p>${destination.description_x}</p>
+                            </div>
+                            <a href="#" id="destination-link" class="button">Visit Website</a>
+                        </div>
+                    `;
+
+                        // Now set the href link
+                        const link = document.getElementById('destination-link');
+                        if (link) {
+                            link.href = destination.website;  // Set the correct link here
+                        }
+
+                        
+                    } else {
+                        document.getElementById('destination-container').innerHTML = '<p>Destination not found.</p>';
+                    }
+                })
+                .catch(error => console.error('Error fetching the dataset:', error));
+        });
+    </script>
+
+</body>
+
+</html>

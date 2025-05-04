@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Persona</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/736x/91/ed/87/91ed87106d401f7210ab74780d85fc1b.jpg');
+            backdrop-filter: blur(5px);
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /*.container {
+            background: rgba(0, 0, 0, 0.6);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }*/
+
+        .container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 30px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .container input[type="text"],
+        .container select {
+            width: 90%; /* Less than 100% to avoid touching the edges */
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+            box-sizing: border-box;
+        }
+
+
+        h2 {
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        select,
+        button,
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            border: none;
+        }
+
+        select {
+            background: white;
+            color: black;
+        }
+
+        button {
+            background: #ff5722;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h2><em>Define Your Travel Persona</em></h2>
+        <form action="{{ url_for('persona') }}" method="POST">
+            <label>Preferred Place Type:</label>
+            <select name="persona">
+                <option value="Religious Sites">Religious Sites</option>
+                <option value="Historical Sites & Landmarks">Historical Sites & Landmarks</option>
+                <option value="Nature & Parks">Nature & Parks</option>
+                <option value="Museums">Museums</option>
+                <option value="Shopping">Shopping</option>
+                <option value="Tours & Adventures">Tours & Adventures</option>
+                <option value="Restaurants (Food & Dining)">Restaurants</option>
+                <option value="Wellness & Fitness">Wellness & Fitness</option>
+                <option value="Entertainment">Entertainment</option>
+            </select>
+            
+
+            <label>Enter Keywords (comma-separated):</label>
+            <input type="text" name="keywords" placeholder="Historical, Adventure, Relaxing" required>
+            <br>
+
+            <!-- <label>Preferred City:</label>
+            <select name="city">
+                <option value="Abha">Abha - أبها</option>
+                <option value="Al Ahsa">Al Ahsa - الأحساء</option>
+                <option value="Al Bahah">Al Bahah - الباحة</option>
+                 Add more cities as needed 
+                <option value="Riyadh">Riyadh - الرياض</option>
+                <option value="Jeddah">Jeddah - جدة</option>
+                <option value="Madinah">Madinah - المدينة</option>
+            </select> -->
+
+            <label>Age Group:</label>
+            <select name="age_group">
+                <option value="All Ages">All Ages</option>
+                <option value="Families">Families</option>
+                <option value="Kids">Kids</option>
+                <!-- <option value="Young Adults">Young Adults</option> -->
+                <option value="Young Adults (18-30)">Young Adults (18-30)</option>
+                <!-- <option value="Seniors">Seniors</option> -->
+                <option value="Seniors (50+)">Seniors (50+)</option>
+                <!-- <option value="Family (30-50)">Family (30-50)</option> -->
+                <!-- <option value="Kids (0-12)">Kids (0-12)</option> -->
+            </select>
+
+            <label>budget:</label>
+            <select name="budget">
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+                <option value="Medium">Medium</option>
+            </select>
+
+            <label>Travel Style:</label>
+            <select name="travel_style">
+                <option value="General">General</option>
+                <option value="Adventure">Adventure</option>
+                <option value="Solo">Solo</option>
+                <option value="Cultural">Cultural</option>
+                <option value="Budget">Budget</option>
+                <option value="Religious">Religious</option>
+                <option value="Luxury">Luxury</option>
+            </select>
+
+            <button type="submit">Save Persona</button>
+        </form>
+    </div>
+</body>
+
+</html>
