@@ -22,7 +22,7 @@ This senior project is a smart tourism recommendation system designed to help us
 
 ## 🧠 Model
 
-- The core logic of the recommendation system is based on the LLM, which matches user-provided keywords with descriptions in the dataset.
+- The core logic of the recommendation system is based on the miniLM, which matches user-provided keywords with descriptions in the dataset.
 - It returns a ranked list of destinations that best fit the user input, filtering them by budget and age when provided.
 
 ## 🖥️ Web Interface
