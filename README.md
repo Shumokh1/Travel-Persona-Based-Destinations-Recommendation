@@ -26,17 +26,17 @@ Technique: Content-based filtering enhanced with pre-trained MiniLM (SentenceTra
 
 Steps:
 
-User inputs preferred subtype and keywords
+- User Input: Preferred theme and keywords describing desired destination
 
-Filter dataset based on user criteria (budget, age, travel style)
+- Data Filtering: Apply filters based on user criteria (e.g., budget, age)
 
-Use MiniLM to embed user input and destination descriptions
+- Text Embedding: Generate semantic embeddings for user input and destination data using MiniLM
 
-Calculate cosine similarity between embeddings
+- Similarity Calculation: Compute cosine similarity between user and destination embeddings
 
-Boost similarity score (+0.1) for matching attributes
+- Score Boosting: Increase similarity by +0.1 for each matching attribute (travel style, age group, budget)
 
-Return top recommendations with scores
+- Output: Return ranked destinations with similarity scores matching user preferences
 ## 🖥️ Web Interface
 
 - The web interface allows users to interact with the system in a simple and accessible way.
