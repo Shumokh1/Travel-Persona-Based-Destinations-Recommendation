@@ -33,7 +33,7 @@ This senior project is a smart tourism recommendation system designed to help us
 ### Sample Output
 
 Below is a preview of the main functionality offered by our application:
-
+<img src="https://github.com/Shumokh1/Travel-Persona-Based-Destinations-Recommendation/blob/main/example.png" width="350" alt="ML Model" />
 ## 🚀 How to Use
 
 1. Open the website in a browser.
