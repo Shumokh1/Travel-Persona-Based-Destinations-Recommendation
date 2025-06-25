@@ -47,9 +47,3 @@ Return top recommendations with scores
 Below is a preview of the main functionality offered by our application:
 
 <img src="https://github.com/Shumokh1/Travel-Persona-Based-Destinations-Recommendation/raw/main/example.png" width="350" alt="ML Model" />
-
-## 🚀 How to Use
-
-1. Open the website in a browser.
-2. Enter your travel preferences (e.g., theme, keywords, age, budget).
-3. View your destination recommendations instantly.
