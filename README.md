@@ -29,7 +29,11 @@ This senior project is a smart tourism recommendation system designed to help us
 
 - The web interface allows users to interact with the system in a simple and accessible way.
 - It collects user preferences and displays the recommended destinations without needing a server-side backend.
-  
+
+### Sample Output
+
+Below is a preview of the main functionality offered by our application:
+
 ## 🚀 How to Use
 
 1. Open the website in a browser.
