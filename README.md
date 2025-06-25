@@ -22,9 +22,21 @@ This senior project is a smart tourism recommendation system designed to help us
 
 ## 🧠 Model
 
-- The core logic of the recommendation system is based on the miniLM, which matches user-provided keywords with descriptions in the dataset.
-- It returns a ranked list of destinations that best fit the user input, filtering them by budget and age when provided.
+Technique: Content-based filtering enhanced with pre-trained MiniLM (SentenceTransformer)
 
+Steps:
+
+User inputs preferred subtype and keywords
+
+Filter dataset based on user criteria (budget, age, travel style)
+
+Use MiniLM to embed user input and destination descriptions
+
+Calculate cosine similarity between embeddings
+
+Boost similarity score (+0.1) for matching attributes
+
+Return top recommendations with scores
 ## 🖥️ Web Interface
 
 - The web interface allows users to interact with the system in a simple and accessible way.
